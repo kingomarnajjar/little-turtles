@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous" />
+    <title>Sydney page with custom Json points</title>
+    <!-- Mapbox CDN -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        #map {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 400px;
+            height: 400px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR SHOULD BE COMPONETISED AND REUSED LATER ON IF VALIDATED BUSINESS>.. -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light " style="background-color: #ffffff;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">little turtles</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Locations
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Sydney</a>
+                        <a class="dropdown-item" href="#">Melbourne</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">More coming soon</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Plans</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Mission</a>
+                </li>
+
+
+
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <h1>Only if large enough mapbox show it, otherwise don't for mobile</h1>
+
+    <br>
+
+    <h2>boob</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <!--Sidebar content-->
+
+                <div class="card-deck">
+                    <div class="card">
+                        <img class="card-img-top" src="https://static01.nyt.com/images/2017/08/23/fashion/23COLIVING-web6/23COLIVING-web7-master675.jpg"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
+                                content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="https://www.travelinglifestyle.net/wp-content/uploads/2017/03/coliving-space-barcelona-landing-pad.jpg"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="https://www.energyaustralia.com.au/sites/default/files/styles/default_mobile/public/2017-01/share-house-living-how-split-bills.jpg?h=b6b2a568&itok=NHkKbGVw"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
+                                card has even longer content than the first to show that equal height action.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-4">
+
+                <!--Body content-->
+                <div id='map'>
+                    <script>
+                        mapboxgl.accessToken = 'pk.eyJ1IjoibmFqb21hcjY4IiwiYSI6ImNqZjkzZGhhczBkc3gycXFvbHA3d2U1aTcifQ.2g2XefOGLxJrIqi8z2uNGA';
+                        var map = new mapboxgl.Map({
+                            container: 'map',
+                            style: 'mapbox://styles/mapbox/streets-v10',
+                            center: [151.210, -33.868],
+                            zoom: 13.5
+                        });
+
+                        var marker = new mapboxgl.Marker()
+                            .setLngLat([151.210, -33.868])
+                            .addTo(map);
+                        // .setPopup(popup);
+
+                        // Add zoom and rotation controls to the map.
+                        map.addControl(new mapboxgl.NavigationControl());
+
+
+                        map.on('load', function () {
+
+                            map.addLayer({
+                                "id": "points",
+                                "type": "symbol",
+                                "source": {
+                                    "type": "geojson",
+                                    "data": {
+                                        "type": "FeatureCollection",
+                                        "features": [{
+                                            "type": "Feature",
+                                            "geometry": {
+                                                "type": "Point",
+                                                "coordinates": []
+                                            },
+                                            "properties": {
+                                                "title": "Mapbox DC",
+                                                "icon": "monument"
+                                            }
+                                        }, {
+                                            "type": "Feature",
+                                            "geometry": {
+                                                "type": "Point",
+                                                "coordinates": [151.210, -33.868
+                                                ]
+                                            },
+                                            "properties": {
+                                                "title": "Sydney",
+                                                "icon": "harbor"
+                                            }
+                                        }]
+                                    }
+                                },
+                                "layout": {
+                                    "icon-image": "{icon}-15",
+                                    "text-field": "{title}",
+                                    "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+                                    "text-offset": [0, 0.6],
+                                    "text-anchor": "top"
+                                    // 330 x h 588px
+                                }
+                            });
+                        });
+
+
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

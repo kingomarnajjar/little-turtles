@@ -1,0 +1,14 @@
+#top{
+   color: blue;
+}
+
+
+.front-page-image {
+    width: 25em;
+    height: 20em;
+}
+
+.navbar {
+    position: relative;
+}
+
